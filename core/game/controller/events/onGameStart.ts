@@ -6,6 +6,7 @@ import { PlayerObject } from "../../model/GameObject/PlayerObject";
 import { roomTeamPlayersNumberCheck } from "../../model/OperateHelper/Quorum";
 import { decideTier, getAvatarByTier, Tier } from "../../model/Statistics/Tier";
 import { setBanlistDataToDB } from "../Storage";
+import { resetTouchCounters, serveBall } from './cos.js';
 
 export function onGameStartListener(byPlayer: PlayerObject | null): void {
     /* Event called when a game starts.
@@ -106,4 +107,8 @@ export function onGameStartListener(byPlayer: PlayerObject | null): void {
     window.gameRoom._room.startRecording();
 
     window.gameRoom.logger.i('onGameStart', msg);
+
+    resetTouchCounters();
+
+    setTimeout(serveBall, 1000);
 }

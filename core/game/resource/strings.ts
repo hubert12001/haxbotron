@@ -2,7 +2,7 @@
 // THE TYPES OF PLACEHOLDER ARE LIMITED BY STRING SET.
 
 export const scheduler = {
-    advertise: '📢 Haxbotron🤖 (https://dapucita.github.io/haxbotron/)\n💬 Discord https://discord.gg/qfg45B2 Donate https://www.patreon.com/dapucita'
+    advertise: '📢 Volleyball 2v2!'
     ,shutdown: '📢 This room will be shutdown soon. Thanks for joinning our game!'
     ,afkKick: '📢 kicked: AFK'
     ,afkCommandTooLongKick: '📢 AFK over 2mins'

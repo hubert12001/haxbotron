@@ -5,6 +5,7 @@ import { getUnixTimestamp } from "../Statistics";
 import { convertTeamID2Name, TeamID } from "../../model/GameObject/TeamID";
 import { ScoresObject } from "../../model/GameObject/ScoresObject";
 import { setBanlistDataToDB } from "../Storage";
+import { resetTouchCounters, gameState } from './cos.js';
 
 export async function onTeamGoalListener(team: TeamID): Promise<void> {
     // Event called when a team scores a goal.
@@ -99,4 +100,8 @@ export async function onTeamGoalListener(team: TeamID): Promise<void> {
             
         }
     }
+
+    gameState.servingTeam = team;
+
+    resetTouchCounters();
 }
