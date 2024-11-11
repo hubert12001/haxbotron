@@ -172,7 +172,7 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
         // if new player
         // create a Player Object
         window.gameRoom.playerList.set(player.id, new Player(player, {
-            rating: 1000,
+            rating: 100,
             totals: 0,
             disconns: 0,
             wins: 0,

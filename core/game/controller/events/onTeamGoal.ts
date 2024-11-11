@@ -70,7 +70,7 @@ export async function onTeamGoalListener(team: TeamID): Promise<void> {
             }
             window.gameRoom._room.sendAnnouncement(goalMsg, null, 0x00FF00, "normal", 0);
             window.gameRoom.logger.i('onTeamGoal', goalMsg);
-        } else { // if the goal is OG
+        } /*else { // if the goal is OG
             placeholderGoal.ogID = touchPlayer;
             placeholderGoal.ogName = window.gameRoom.playerList.get(touchPlayer)!.name;
             window.gameRoom.playerList.get(touchPlayer)!.matchRecord.ogs++; // record OG in match record
@@ -99,6 +99,7 @@ export async function onTeamGoalListener(team: TeamID): Promise<void> {
             }
             
         }
+            */
     }
 
     gameState.servingTeam = team;

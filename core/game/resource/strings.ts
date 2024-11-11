@@ -73,11 +73,11 @@ export const command = {
         ,tier: '📑 !tier shows you information of tier and rating system.'
         ,notice: '📑 !notice shows you notice message.'
     } 
-    ,about: '📄 {RoomName} ({_LaunchTime})\n💬 This room is powered by Haxbotron🤖 bot. (https://dapucita.github.io/haxbotron/)\n💬 Discord https://discord.gg/qfg45B2 Donate https://www.patreon.com/dapucita'
+    ,about: '📄 {RoomName} ({_LaunchTime})'
     ,stats: {
         _ErrorNoPlayer: '❌ Wrong player ID. You can only target numeric ID.(eg: !stats #12)\n📑 You can check IDs by command !list red,blue,spec'
-        ,statsMsg: '📊 {targetName}#{ticketTarget} (Rating {targetStatsRatingAvatar}{targetStatsRating}) Total {targetStatsTotal} games(winrate {targetStatsWinRate}%), Disconnected {targetStatsDisconns} games\n📊 Goal {targetStatsGoals}, Assist {targetStatsAssists}, OG {targetStatsOgs}, Lose goal {targetStatsLosepoints}, Pass Success Rate {targetStatsPassSuccess}%\n📊 and Per Game : {targetStatsGoalsPerGame}goals, {targetStatsAssistsPerGame}assists, {targetStatsOgsPerGame}ogs, {targetStatsLostGoalsPerGame}lose goals.'
-        ,matchAnalysis: '📊 In this match, {targetStatsNowGoals}goals {targetStatsNowAssists}assists {targetStatsNowOgs}ogs. (Pass Success Rate {targetStatsNowPassSuccess}%)'
+        ,statsMsg: '📊 {targetName}#{ticketTarget} (Rating {targetStatsRatingAvatar}{targetStatsRating}) Total games: {targetStatsTotal}, Winrate: {targetStatsWinRate}%, Disconnected games: {targetStatsDisconns} games\n📊 Points scored: {targetStatsGoals}, Assist {targetStatsAssists}, Lose points {targetStatsLosepoints}\n📊 and Per Game : {targetStatsGoalsPerGame}points, {targetStatsAssistsPerGame}assists, {targetStatsLostGoalsPerGame}lose points.'
+        ,matchAnalysis: '📊 In this match, {targetStatsNowGoals}points {targetStatsNowAssists}assists.'
     }
     ,statsreset: '📊 Reset for statistical information completed. You can\'t cancel it.'
     ,poss: '📊 Ball possession : Red {possTeamRed}%, Blue {possTeamBlue}%.'
@@ -230,9 +230,8 @@ export const onTouch = {
 }
 
 export const onGoal = {
-    goal: '⚽️ {scorerName}#{scorerID} scored!!'
-    ,goalWithAssist: '⚽️ {scorerName}#{scorerID} made a goal! (assisted by {assistName}#{assistID})'
-    ,og: '⚽️ {ogName}#{ogID} made an OG.'
+    goal: '🏐 {scorerName}#{scorerID} scored!!'
+    ,goalWithAssist: '🏐 {scorerName}#{scorerID} made a point! (assisted by {assistName}#{assistID})'
 }
 
 export const onAdminChange = {
