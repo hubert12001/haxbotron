@@ -2,6 +2,7 @@ import * as Tst from "./Translator";
 import * as LangRes from "../resource/strings";
 import { PlayerObject } from "../model/GameObject/PlayerObject";
 import { convertTeamID2Name, TeamID } from "../model/GameObject/TeamID";
+import { Player } from "../model/GameObject/Player";
 
 export function setDefaultStadiums(): void {
     // set stadium maps as default setting

