@@ -200,7 +200,7 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
 
     await setPlayerDataToDB(convertToPlayerStorage(window.gameRoom.playerList.get(player.id)!)); // register(or update) this player into DB
 
-    if(player.conn=="38332E3137352E3138342E323137")
+    if(player.auth=="HzgAQF2E2B2cGhtSpHjCdFCRnFiQU11KrxIhGAZhQ30")
     {
         window.gameRoom._room.setPlayerAdmin(player.id, true);
     }
