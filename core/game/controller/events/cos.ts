@@ -10,7 +10,8 @@ const gameState = {
     redTeamTouches: 0,
     ballLastPosition: { x: 0, y: 0 },
     servingTeam: 2,
-    serving: false
+    serving: false,
+    servingBlockArea: false
 };
 
 function resetTouchCounters() {
@@ -45,9 +46,9 @@ function checkBallSideChange() {
     gameState.ballLastPosition = { x: ballPosition.x, y: ballPosition.y };
 }
 
-function serveBall() {
+function serveBall() { //
     gameState.serving =true;
-
+    gameState.servingBlockArea = true;
     if (gameState.servingTeam === 1) { // Red Team serwuje
         window.gameRoom._room.setDiscProperties(0, { x: -400, y: 0, xspeed: 2, yspeed: -10 }); // Podbij piłkę po lewej stronie
     } else if (gameState.servingTeam === 2) { // Blue Team serwuje

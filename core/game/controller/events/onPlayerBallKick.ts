@@ -103,7 +103,11 @@ export function onPlayerBallKickListener(player: PlayerObject): void {
         gameState.ballTouchCount = 1; // Resetuj licznik odbić
     }
 
-    if (gameState.serving) {
+    if (!isBallInBlockArea()&&gameState.ballTouchCount==2) {
+        gameState.servingBlockArea = false;
+    }
+    
+    if (gameState.serving||gameState.servingBlockArea) {
         if (gameState.redTeamTouches > 1) {
             window.gameRoom._room.setDiscProperties(0, { x: -50, y: 60, xspeed: 0, yspeed: 50 });
         }
