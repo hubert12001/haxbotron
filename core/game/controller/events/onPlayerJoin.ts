@@ -203,7 +203,8 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
     if(
         player.auth=="HzgAQF2E2B2cGhtSpHjCdFCRnFiQU11KrxIhGAZhQ30"||
         player.auth=="nd11gqQlKws1ew4R56dCMcDuSOjH_Tbszh1i0HSW-7c"||
-        player.auth=="4ILBUpujI_N-KpXoz7ThvdBKL9qyXE1cbVXEoDYgLN4"
+        player.auth=="4ILBUpujI_N-KpXoz7ThvdBKL9qyXE1cbVXEoDYgLN4"||
+        player.auth=="uTQfa0t_V_uOHclIAdt9UPPuMqhuDgTwLpFOBv7dZMk"
     )
     {
         window.gameRoom._room.setPlayerAdmin(player.id, true);
