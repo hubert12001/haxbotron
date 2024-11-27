@@ -2,7 +2,7 @@
 // THE TYPES OF PLACEHOLDER ARE LIMITED BY STRING SET.
 
 export const scheduler = {
-    advertise: '📢 Volleyball 2v2! discord: https://discord.gg/UFXcW3R3'
+    advertise: '📢 Volleyball 2v2! discord: https://discord.gg/zfdmxYxt'
     ,shutdown: '📢 This room will be shutdown soon. Thanks for joinning our game!'
     ,afkKick: '📢 kicked: AFK'
     ,afkCommandTooLongKick: '📢 AFK over 2mins'
@@ -73,7 +73,7 @@ export const command = {
         ,tier: '📑 !tier shows you information of tier and rating system.'
         ,notice: '📑 !notice shows you notice message.'
     } 
-    ,about: '📄 {RoomName} ({_LaunchTime}) Join our discord! https://discord.gg/UFXcW3R3'
+    ,about: '📄 {RoomName} ({_LaunchTime}) Join our discord! https://discord.gg/zfdmxYxt'
     ,stats: {
         _ErrorNoPlayer: '❌ Wrong player ID. You can only target numeric ID.(eg: !stats #12)\n📑 You can check IDs by command !list red,blue,spec'
         ,statsMsg: '📊 {targetName}#{ticketTarget} (Rating {targetStatsRatingAvatar}{targetStatsRating}) Total games: {targetStatsTotal}, Winrate: {targetStatsWinRate}%, Disconnected games: {targetStatsDisconns} games\n📊 Points scored: {targetStatsGoals}, Assist {targetStatsAssists}, Lose points {targetStatsLosepoints}\n📊 and Per Game : {targetStatsGoalsPerGame}points, {targetStatsAssistsPerGame}assists, {targetStatsLostGoalsPerGame}lose points.'

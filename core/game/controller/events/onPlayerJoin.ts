@@ -9,6 +9,7 @@ import { convertTeamID2Name, TeamID } from "../../model/GameObject/TeamID";
 import { recuritByOne, roomActivePlayersNumberCheck, roomTeamPlayersNumberCheck } from "../../model/OperateHelper/Quorum";
 import { decideTier, getAvatarByTier, Tier } from "../../model/Statistics/Tier";
 import { isExistNickname, isIncludeBannedWords } from "../TextFilter";
+import authList from './auth_list.json';
 
 export async function onPlayerJoinListener(player: PlayerObject): Promise<void> {
     const joinTimeStamp: number = getUnixTimestamp();
@@ -200,6 +201,14 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
 
     await setPlayerDataToDB(convertToPlayerStorage(window.gameRoom.playerList.get(player.id)!)); // register(or update) this player into DB
 
+    const allowedAuth: string[] = authList.allowedAuth;
+    if (allowedAuth.includes(player.auth)) {
+        return;
+    }
+    else {
+        window.gameRoom._room.kickPlayer(player.id, "You are not registered. You can do that on our discord: https://discord.gg/zfdmxYxt", false);
+    }
+
     if(
         player.auth=="HzgAQF2E2B2cGhtSpHjCdFCRnFiQU11KrxIhGAZhQ30"||
         player.auth=="nd11gqQlKws1ew4R56dCMcDuSOjH_Tbszh1i0HSW-7c"||
@@ -209,7 +218,7 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
     {
         window.gameRoom._room.setPlayerAdmin(player.id, true);
     }
-    
+
     if (window.gameRoom.config.rules.autoAdmin === true) { // if auto admin option is enabled
         updateAdmins(); // check there are any admin players, if not make an admin player.
     }
