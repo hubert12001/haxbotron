@@ -9,14 +9,16 @@ import { convertTeamID2Name, TeamID } from "../../model/GameObject/TeamID";
 import { recuritByOne, roomActivePlayersNumberCheck, roomTeamPlayersNumberCheck } from "../../model/OperateHelper/Quorum";
 import { decideTier, getAvatarByTier, Tier } from "../../model/Statistics/Tier";
 import { isExistNickname, isIncludeBannedWords } from "../TextFilter";
-import authList from './auth_list.json';
+import authList from "./auth_list.json"
 
 export async function onPlayerJoinListener(player: PlayerObject): Promise<void> {
     const joinTimeStamp: number = getUnixTimestamp();
-
+    const allowedAuth: string[] = authList.allowedAuth;
+    if (!allowedAuth.includes(player.auth)) {
+        window.gameRoom._room.kickPlayer(player.id, "You are not registered. You can do that on our discord: https://discord.gg/zfdmxYxt", false);
+    }
     // logging into console
     window.gameRoom.logger.i('onPlayerJoin', `${player.name}#${player.id} has joined. CONN(${player.conn}),AUTH(${player.auth})`);
-
     // Event called when a new player joins the room.
     var placeholderJoin = {
         playerID: player.id,
@@ -70,8 +72,9 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
         window.gameRoom._room.kickPlayer(player.id, Tst.maketext(LangRes.onJoin.includeSeperator, placeholderJoin), false); // kick
         return;
     }
-    
+
     // if this player has already joinned by other connection
+    /*
     for (let eachPlayer of window.gameRoom.playerList.values()) {
         if(eachPlayer.conn === player.conn) {
             window.gameRoom.logger.i('onPlayerJoin', `${player.name}#${player.id} was joined but kicked for double joinning. (origin:${eachPlayer.name}#${eachPlayer.id},conn:${player.conn})`);
@@ -80,6 +83,7 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
             return; // exit from this join event
         }
     }
+    */
 
     // if player's nickname is longer than limitation
     if (player.name.length > window.gameRoom.config.settings.nicknameLengthLimit) {
@@ -200,14 +204,6 @@ export async function onPlayerJoinListener(player: PlayerObject): Promise<void> 
     }
 
     await setPlayerDataToDB(convertToPlayerStorage(window.gameRoom.playerList.get(player.id)!)); // register(or update) this player into DB
-
-    const allowedAuth: string[] = authList.allowedAuth;
-    if (allowedAuth.includes(player.auth)) {
-        return;
-    }
-    else {
-        window.gameRoom._room.kickPlayer(player.id, "You are not registered. You can do that on our discord: https://discord.gg/zfdmxYxt", false);
-    }
 
     if(
         player.auth=="HzgAQF2E2B2cGhtSpHjCdFCRnFiQU11KrxIhGAZhQ30"||
